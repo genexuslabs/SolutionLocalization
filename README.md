@@ -77,15 +77,29 @@ The names of the elements are self-descriptive. Note that the ResourceFile eleme
 
 ### ResXToXml Task
 
+#### MSBuild Declaration
+
 So we need to generate this format automatically based on our resx files. 
 ```
 <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.ResXToXmlTask" />
 
 <Target Name="GenerateXmlFromResx">
-		<ResXToXmlTask DirectoryExclude="@(ExcludeDirectory)" Excludes="@(ExcludeExpression)" InputPath="$(RootDir)" OutputXml="$(OutputXls)" Culture="@(CultureInfo)" />
+		<ResXToXmlTask DirectoryExclude="@(ExcludeDirectory)" Excludes="@(ExcludeExpression)" InputPath="$(RootDir)" OutputXml="$(OutputXml)" Culture="@(CultureInfo)" />
 	</Target>
 
 ```
+
+#### Command Line Call
+```
+msbuild GenerateResources.msbuild /t:GenerateXmlFromResx /p:InputPath=c:\dev\tilo\  /p:OutputXml=c:\Dev\Tools\SatelliteGeneration\data.xml
+```
+
+After having our data.xml we can have several options: 
+
+### Integration with GeneXus Colaborative Translation
+
+This site allow us to create a special project for doing a colaborative translation around our Solution
+
 
 
 

@@ -30,7 +30,7 @@ Allow to create a catalog of all resources and projects we need to take into acc
 ```
 <Target Name="CreateResourcesCatalog">
 		<CreateResourcesCatalog
-			BasePath="$(BasePath)"
+			BasePath="***$(BasePath)***"
 			SerializedPath="$(SerializedPath)"
 			DirectoryExclude="@(ExcludeDirectory)" />
 </Target>

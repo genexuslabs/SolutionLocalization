@@ -26,12 +26,14 @@ So let's see what are the tasks we need to follow this path
 
 First of all we need to create our "plan" of what we need to translate. In order to do this we have the CreateResourcesCatalog task.
 
-### Create Resource Catalog
+### Create Resource Catalog Task
 
 Allow to create a catalog of all resources and projects we need to take into account. Basically this task receive the BasePath for the Solution and it will scan looking for C# projects and considering their resources.
 
 #### MSBuild Declaration
 ```
+<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.CreateResourcesCatalog" />
+
 <ItemGroup>
 		<ExcludeDirectory Include="\_TMP"/>
 		<ExcludeDirectory Include="\_Build"/>
@@ -51,4 +53,39 @@ msbuild GenerateResources.msbuild /t:CreateResourcesCatalog /p:BasePath=c:\dev\t
 ```
 
 ### 
+
+Now that we have a plan we need to create a way to interchange information with others. Instead on sending all the resx file we defined a simple unified of sending all the messages taking into account all the translation of a given message.
+Basically the format is a collection of Messages with this format:
+
+```
+<Message>
+	<ResourceFile>Architecture\Base\Common\Resources\Messages.resx</ResourceFile>
+	<ResourceKey>ActionNotDefined</ResourceKey>
+	<Text>Action '{0}' is not defined</Text>
+	<Comment />
+	<Translation>
+		<Text Culture="ja-JP">アクション '{0}' は定義されていません</Text>
+		<Text Culture="zh-CHS">未定义动作'{0}'</Text>
+		<Text Culture="ar">الإجراء "{0}" لم يتم تعريفه</Text>
+		<Text Culture="es">La acción '{0}' no está definida nueva</Text>
+		<Text Culture="pt">Ação '{0}' não está definida jj kk</Text>
+		<Text Culture="it">L'azione '{0}' non è definita</Text>
+	</Translation>
+</Message>
+```
+The names of the elements are self-descriptive. Note that the ResourceFile element maintains the relative structure of where the RESX is for the solution.
+
+### ResXToXml Task
+
+So we need to generate this format automatically based on our resx files. 
+```
+<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.ResXToXmlTask" />
+
+<Target Name="GenerateXmlFromResx">
+		<ResXToXmlTask DirectoryExclude="@(ExcludeDirectory)" Excludes="@(ExcludeExpression)" InputPath="$(RootDir)" OutputXml="$(OutputXls)" Culture="@(CultureInfo)" />
+	</Target>
+
+```
+
+
 

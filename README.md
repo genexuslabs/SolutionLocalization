@@ -98,8 +98,29 @@ After having our data.xml we can have several options:
 
 ### Integration with GeneXus Colaborative Translation
 
-This site allow us to create a special project for doing a colaborative translation around our Solution
+This site allow us to create a special project for doing a colaborative translation around our Solution.
 
+So basically we create a Project then we upload our data to it (obviously it support our data.xml format) and then you can use GeneXus Colaborative Translation for automatically translate your application to different languages.
 
+In this tool you can validate messages, etc.
+
+Once you are ready, you can use the following task to bring your data back again directly to your resx files and regenerate your resource assemblies.
+
+### DataToResxTask 
+
+#### MSBuild Declaration
+
+```
+ <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.DataToResxTask" />
+ <Target Name="DataToResx" DependsOnTargets="GetSdkPath">
+    <DataToResxTask ServiceUrl="$(ServiceUrl)"  OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+  </Target>
+```
+
+#### Command Line Call
+
+```
+msbuild GenerateResources.msbuild /t:DataToResx /p:OutputDirectory=c:\SolutionDir /p:ServiceUrl="https://labsnet.genexuscloud.com/CollaborativeTranslations/atoxml.aspx?2"
+```
 
 

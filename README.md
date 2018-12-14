@@ -11,7 +11,7 @@ For this, what needs to be done is to create Satellite Assemblies for each langu
 
 The natural process is the following:
 
-1) Given the resx of the solution create some data exchange mechanism (ie: data.xml).
+1) Given all the resx of the solution create some data exchange mechanism (ie: data.xml).
 
 2) These data must be able to be sent in different formats to third parties so they can be translated. (Excel spreadsheets, imported in external tools, etc.)
 
@@ -19,3 +19,25 @@ The natural process is the following:
 This step has the complexity of knowing where each of our resx goes in the initial solution.
 
 4) Include the satellite assemblies in our setup.
+
+## MSBuild Tasks for automation
+
+### Create Resource Catalog
+
+Allow to create a catalog of all resources and projects we need to take into account. Basically this task receive the BasePath for the Solution and it will scan looking for C# projects and considering their resources.
+
+#### MSBuild Declaration
+```
+<Target Name="CreateResourcesCatalog">
+		<CreateResourcesCatalog
+			BasePath="$(BasePath)"
+			SerializedPath="$(SerializedPath)"
+			DirectoryExclude="@(ExcludeDirectory)" />
+</Target>
+```
+
+#### Command Line Call
+```
+msbuild GenerateResources.msbuild /t:CreateResourcesCatalog /p:BasePath=c:\dev\tilo\  /p:SerializedPath=c:\Dev\Tools\SatelliteGeneration\plan.xml
+```
+

@@ -20,7 +20,11 @@ This step has the complexity of knowing where each of our resx goes in the initi
 
 4) Include the satellite assemblies in our setup.
 
+So let's see what are the tasks we need to follow this path
+
 ## MSBuild Tasks for automation
+
+First of all we need to create our "plan" of what we need to translate. In order to do this we have the CreateResourcesCatalog task.
 
 ### Create Resource Catalog
 
@@ -28,9 +32,14 @@ Allow to create a catalog of all resources and projects we need to take into acc
 
 #### MSBuild Declaration
 ```
+<ItemGroup>
+		<ExcludeDirectory Include="\_TMP"/>
+		<ExcludeDirectory Include="\_Build"/>
+</ItemGroup>
+
 <Target Name="CreateResourcesCatalog">
 		<CreateResourcesCatalog
-			BasePath="***$(BasePath)***"
+			BasePath="$(BasePath)"
 			SerializedPath="$(SerializedPath)"
 			DirectoryExclude="@(ExcludeDirectory)" />
 </Target>
@@ -40,4 +49,6 @@ Allow to create a catalog of all resources and projects we need to take into acc
 ```
 msbuild GenerateResources.msbuild /t:CreateResourcesCatalog /p:BasePath=c:\dev\tilo\  /p:SerializedPath=c:\Dev\Tools\SatelliteGeneration\plan.xml
 ```
+
+### 
 

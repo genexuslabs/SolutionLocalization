@@ -1,0 +1,131 @@
+<Project ToolsVersion="2.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="GenerateAssemblies">
+	<UsingTask
+	 AssemblyFile="MSBuild.Community.Tasks.dll"
+	 TaskName="MSBuild.Community.Tasks.XmlRead"></UsingTask>
+
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.ResXToXlsTask" />
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.ResXToXmlTask" />
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.XlsToResxTask" />
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.GenerateAssemblies" />
+  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.CreateResourcesCatalog" />
+  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.GenerateResourcesForGeneXusTask" />
+  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.DataToResxTask" />
+ 
+  
+
+	<PropertyGroup>
+		<FileVersion>10.1.0.0</FileVersion>
+		<KeyFile>c:\dev\tilo\CommonInfo\Security\Keys\Artech.snk</KeyFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ExcludeDirectory Include="\_TMP"/>
+		<ExcludeDirectory Include="\_Build"/>
+		<ExcludeDirectory Include="\Freezer"/>
+		<ExcludeDirectory Include="\Interop\Freezer"/>
+		<ExcludeDirectory Include="\SDK"/>
+		<ExcludeDirectory Include="\Knowledgebases"/>
+		<ExcludeDirectory Include="\Deploy"/>
+		<ExcludeDirectory Include="\Products\DK"/>
+		<ExcludeDirectory Include="\Extensions"/>
+		<ExcludeDirectory Include="\GAM"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ExcludeExpression Include=".Name"/>
+		<ExcludeExpression Include=".ZOrder"/>
+		<ExcludeExpression Include=".Parent"/>
+		<ExcludeExpression Include=".Type"/>
+		<ExcludeExpression Include=".TextHAlignAsString"/>
+		<ExcludeExpression Include=".TextVAlignAsString"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- You can specify a unique culture using /p:Culture=ja-jP   or   a list of cultures using /p:CultureInfo=ja-JP;zh-CHS;es  or -->
+		<CultureInfo Include="$(Culture)" Condition="'$(Culture)'!=''"/>
+		<!-- using the value /p:CulturesCommaSeparated=ja-JP,zh-CHS,es (useful when calling this msbuild from another one through the MSBuild task)-->
+		<CultureInfo Include="$([System.String]::Copy('$(CulturesCommaSeparated)').Split(','))" Condition="'$(Culture)'=='' and '$(CulturesCommaSeparated)'!=''"/>
+		<!-- And define a default value (required for already configured executions on other branches because this source is shared between several versions) -->
+		<CultureInfo Include="jp-JP" Condition="'$(Culture)'=='' and '$(CulturesCommaSeparated)'==''"/>
+	</ItemGroup>
+
+  <Target Name="DataToResx" DependsOnTargets="GetSdkPath">
+    <DataToResxTask ServiceUrl="$(ServiceUrl)"  OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+  </Target>
+
+  <Target Name="TestCultureResources" DependsOnTargets="GetSdkPath">
+    <ItemGroup>
+      <SatelliteTool Include="$(SdkPath)\**\resgen.exe"/>
+    </ItemGroup>
+    <PropertyGroup>
+      <SatelliteToolsPath>$([System.IO.Directory]::GetParent(%(SatelliteTool.Identity)))</SatelliteToolsPath>
+    </PropertyGroup>
+
+    <DataToResxTask ServiceUrl="$(ServiceUrl)" DataFile="$(DataFile)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+
+    <GenerateAssemblies
+			PlanXml="$(PlanXml)"
+			KeyFile="$(KeyFile)"
+			FileVersion="$(Version)"
+			BasePath="$(OutputDirectory)"
+			Culture="$(Culture)"
+			SpecificAssembly="$(SpecificAssembly)"
+			IntermediateDirectory="$(IntermediateDirectory)"
+			Configuration="$(Configuration)"
+			ToolsPath="$(SatelliteToolsPath)"/>
+
+    <GenerateResourcesForGeneXusTask GeneXusPath="$(GenexusDirectory)" BasePath="$(OutputDirectory)" Culture="$(Culture)" />
+    
+  </Target>
+
+	<Target Name="GenerateAssemblies" DependsOnTargets="GetSdkPath">
+		<ItemGroup>
+			<SatelliteTool Include="$(SdkPath)\**\resgen.exe"/>
+		</ItemGroup>
+		<PropertyGroup>
+			<SatelliteToolsPath>$([System.IO.Directory]::GetParent(%(SatelliteTool.Identity)))</SatelliteToolsPath>
+		</PropertyGroup>
+		<GenerateAssemblies
+			PlanXml="$(PlanXml)"
+			KeyFile="$(KeyFile)"
+			FileVersion="$(Version)"
+			BasePath="$(BasePath)"
+			Culture="$(Culture)"
+			SpecificAssembly="$(SpecificAssembly)"
+			IntermediateDirectory="$(IntermediateDirectory)"
+			Configuration="$(Configuration)"
+			ToolsPath="$(SatelliteToolsPath)"/>
+	</Target>
+
+	<Target Name="CreateResourcesCatalog">
+		<CreateResourcesCatalog
+			BasePath="$(BasePath)"
+			SerializedPath="$(SerializedPath)"
+			DirectoryExclude="@(ExcludeDirectory)" />
+	</Target>
+
+	<Target Name="GenerateXlsFromResx" DependsOnTargets="ReadExcludeFilesFromFile">
+		<Message Text="[INFO] Excluding the following paths : @(ExcludeDirectory)"/>
+		<ResXToXlsTask DirectoryExclude="@(ExcludeDirectory)" Excludes="@(ExcludeExpression)" InputPath="$(RootDir)" OutputXls="$(OutputXls)" Culture="@(CultureInfo)"/>
+	</Target>
+
+	<Target Name="GenerateXmlFromResx">
+		<ResXToXmlTask DirectoryExclude="@(ExcludeDirectory)" Excludes="@(ExcludeExpression)" InputPath="$(RootDir)" OutputXls="$(OutputXls)" Culture="@(CultureInfo)" />
+	</Target>
+
+	<Target Name="GenerateResxFromXls">
+		<XlsToResxTask InputXls="$(InputXls)" XmlValidEntriesFile="$(XmlValidFile)" OutputPath="$(OutputPath)" />
+	</Target>
+
+	<Target Name="ReadExcludeFilesFromFile" Condition="Exists('$(ExcludeFilesList)')">
+		<ReadLinesFromFile File="$(ExcludeFilesList)">
+			<Output TaskParameter="Lines" ItemName="ExcludeDirectory"/>
+		</ReadLinesFromFile>
+	</Target>
+
+	<Target Name="GetSdkPath">
+		<GetFrameworkSdkPath>
+			<Output TaskParameter="FrameworkSdkVersion40Path" PropertyName="SdkPath" />
+		</GetFrameworkSdkPath>
+	</Target>
+</Project>

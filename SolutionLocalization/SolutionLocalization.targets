@@ -1,0 +1,6 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="SolutionLocalization.ResXToXlsTask" AssemblyFile="SolutionLocalization.dll"/>
+	<UsingTask TaskName="SolutionLocalization.XlsToResx" AssemblyFile="SolutionLocalization.dll"/>
+  <UsingTask TaskName="SolutionLocalization.DataToResxTask" AssemblyFile="SolutionLocalization.dll"/>
+  <UsingTask TaskName="SolutionLocalization.GenerateResourcesForGeneXusTask" AssemblyFile="SolutionLocalization.dll"/>
+</Project>

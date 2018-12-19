@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+	<value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+	<value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+	<comment>This is a comment</comment>
+    </data>
+		
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+	    : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+	    : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+	    : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+	    : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+	    : using a System.ComponentModel.TypeConverter
+	    : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+	<xsd:choice maxOccurs="unbounded">
+	  <xsd:element name="metadata">
+	    <xsd:complexType>
+	      <xsd:sequence>
+		<xsd:element name="value" type="xsd:string" minOccurs="0" />
+	      </xsd:sequence>
+	      <xsd:attribute name="name" use="required" type="xsd:string" />
+	      <xsd:attribute name="type" type="xsd:string" />
+	      <xsd:attribute name="mimetype" type="xsd:string" />
+	      <xsd:attribute ref="xml:space" />
+	    </xsd:complexType>
+	  </xsd:element>
+	  <xsd:element name="assembly">
+	    <xsd:complexType>
+	      <xsd:attribute name="alias" type="xsd:string" />
+	      <xsd:attribute name="name" type="xsd:string" />
+	    </xsd:complexType>
+	  </xsd:element>
+	  <xsd:element name="data">
+	    <xsd:complexType>
+	      <xsd:sequence>
+		<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+		<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+	      </xsd:sequence>
+	      <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+	      <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+	      <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+	      <xsd:attribute ref="xml:space" />
+	    </xsd:complexType>
+	  </xsd:element>
+	  <xsd:element name="resheader">
+	    <xsd:complexType>
+	      <xsd:sequence>
+		<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+	      </xsd:sequence>
+	      <xsd:attribute name="name" type="xsd:string" use="required" />
+	    </xsd:complexType>
+	  </xsd:element>
+	</xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionNotDefined" xml:space="preserve"> Ação '{0}' não está definida </data>
+  <data name="ApplyDefaultRequiresObject" xml:space="preserve"> O destino fornecido para DefaultManager.ApplyDefault não forneceu uma instância de KBObject. </data>
+  <data name="DuplicatePartInDescriptor" xml:space="preserve"> Duplicar parte GUID ({0}) não pode ser adicionado ao descritor para o objeto '{1}' ({2}) </data>
+  <data name="FactoryCannotCreateObject" xml:space="preserve"> Objeto com GUID '{0}' não pode ser criado pelo DefaultObjectFactory porque seu tipo ({1}) não possui um construtor com uma assinatura apropriada. </data>
+  <data name="FactoryCannotCreatePart" xml:space="preserve"> Parte com GUID '{0}' não pode ser criada pelo DefaultPartFactory porque seu tipo ({1}) não possui um construtor com uma assinatura apropriada. </data>
+  <data name="KnowledgeBaseAlreadyExists" xml:space="preserve"> Já existe uma base de conhecimento neste local ({0}). </data>
+  <data name="MEInvalidProviderAssignment" xml:space="preserve"> O Provedor não pode ser alterado neste momento. </data>
+  <data name="MENoDescriptorProvider" xml:space="preserve"> Pacote de provedor para objeto ou parte '{0}' ({1}) não encontrado. </data>
+  <data name="PartAddedNotInDescriptor" xml:space="preserve"> Uma parte do tipo '{0}' foi adicionada ao objeto '{1}', mas o descritor do objeto não especifica essa parte. </data>
+  <data name="PartAddedWithWrongObject" xml:space="preserve"> Uma parte do tipo '{0}' foi adicionada ao objeto '{1}', mas o KBObject da peça é '{2}'. </data>
+  <data name="ServiceNotFound" xml:space="preserve"> Serviço não encontrado: '{0}'. </data>
+  <data name="ShowThisCategoryintheModelTree" xml:space="preserve"> Mostrar esta categoria na árvore modelo </data>
+  <data name="KnowledgeBaseType" xml:space="preserve"> Base de Conhecimento </data>
+  <data name="DescriptorString" xml:space="preserve"> {0} ({1}) </data>
+  <data name="DefaultNotSupported" xml:space="preserve"> Não é possível usar o padrão para '{0}', o descritor não suporta isso. </data>
+  <data name="MECanNotConvertValueForType" xml:space="preserve"> Não é possível converter o valor '{0}' </data>
+  <data name="InvalidKBObjectSubclass" xml:space="preserve"> TKBObject deve ser uma subclasse apropriada de KBObject. </data>
+  <data name="InvalidMethodOnSurrogate" xml:space="preserve"> O método '{0}' não pode ser usado em um KBObjectSurrogate. O objeto é considerado como somente leitura. </data>
+  <data name="VersionBranch" xml:space="preserve"> Versão </data>
+  <data name="ScopedCacheCannotDispose" xml:space="preserve"> ScopedModelObjectCache não pode ser descartado. Nenhuma informação foi encontrada nos dados do segmento. </data>
+  <data name="ScopedCacheInvalidContext" xml:space="preserve"> Este ScopedModelObjectCache não pode ser usado, não é o mais alto na pilha de chamadas para este segmento. </data>
+  <data name="DescriptorNotFound" xml:space="preserve"> Nenhum descritor encontrado para o tipo '{0}'. </data>
+  <data name="CannotSaveInNonDesignModel" xml:space="preserve"> {0} não pode ser salvo no modelo '{1}' a menos que SavePreferences.AllowSaveInPrototype esteja definido. </data>
+  <data name="EventSubscriptionWithoutPublication" xml:space="preserve"> Não é possível adicionar uma subcategoria para o tópico '{0}', pois não há editores. </data>
+  <data name="IncompatiblePublicationExceptionHandling" xml:space="preserve"> "Manipulação de exceção de publicação incompatível: * {0}. {1} - {2} * {3}. {4} - {5} </data>
+  <data name="ModelPropertyNotAvailable" xml:space="preserve"> O KBModel não foi encontrado no pacote de propriedades. </data>
+  <data name="CacheNotLoading" xml:space="preserve"> O cache não está sendo carregado, não pode obter resultados parciais. </data>
+  <data name="TransactionWasNotDisposed" xml:space="preserve"> KnowledgeBase.Transaction sempre deve ser iniciado com o uso de {...} construção. </data>
+  <data name="CouldNotCreateNewModel" xml:space="preserve"> Não foi possível criar novo modelo </data>
+  <data name="InvalidModelType" xml:space="preserve"> Tipo inválido {0} para o modelo </data>
+  <data name="CouldNotCreateNewDesignModel" xml:space="preserve"> Não foi possível criar um novo modelo de design </data>
+  <data name="CouldNotCreateNewTargetModel" xml:space="preserve"> Não foi possível criar novo modelo de destino </data>
+  <data name="UpdateCacheWasFullNoDetails" xml:space="preserve"> Não é possível consultar informações detalhadas, o cache foi totalmente atualizado. </data>
+  <data name="CategoryCannotAddDynamic" xml:space="preserve"> {0} não pode ser adicionado explicitamente à categoria dinâmica '{1}'. </data>
+
+  <data name="DesignModel" xml:space="preserve"> Versão </data>
+  <data name="DesignModelName" xml:space="preserve"> Versão '{0}' </data>
+  <data name="PrototypeModel" xml:space="preserve"> Meio Ambiente </data>
+  <data name="PrototypeModelName" xml:space="preserve"> Ambiente '{0}' </data>
+  <data name="CouldNotDeleteModel" xml:space="preserve"> Não foi possível excluir o modelo '{0}' </data>
+  <data name="CouldNotDeleteModels" xml:space="preserve"> Não foi possível excluir modelos </data>
+  <data name="MissingDescriptorImport" xml:space="preserve"> {0} descritor não encontrado: '{1}' (fornecido pelo pacote '{2}'). </data>
+  <data name="Object" xml:space="preserve"> Objeto </data>
+  <data name="Part" xml:space="preserve"> Parte </data>
+  <data name="ObjectPartPosition" xml:space="preserve"> {0}, {1} </data>
+  <data name="ImportTypeAllObjects" xml:space="preserve"> Todos os objetos </data>
+  <data name="ImportTypeCustom" xml:space="preserve">&lt;Custom&gt;</data>
+  <data name="ImportTypeDifferentObjects" xml:space="preserve"> Objetos Diferentes </data>
+  <data name="ImportTypeNewerObjects" xml:space="preserve"> Objetos Recentes </data>
+  <data name="CannotDeleteLinkedVersion" xml:space="preserve"> A versão '{0}' não pode ser excluída, pois é a versão vinculada ao GeneXus Server. Desconecte-o e tente novamente. </data>
+  <data name="ViewDifferences" xml:space="preserve"> Veja as diferenças </data>
+  <data name="OpenKBNewGxVersion" xml:space="preserve"> Esta é a primeira vez que você abre esta Base de Conhecimento com {0}. Se você continuar e salvar objetos com esta versão, eles podem não ser abertos em versões anteriores do GeneXus. </data>
+  <data name="OpenKBOldGXVersion" xml:space="preserve"> Esta Base de Conhecimento foi aberta com uma versão mais recente do GeneXus ({0}). Pode conter objetos (ou partes deles) que esta versão não pode manipular. </data>
+  <data name="OpenKBReorganizationNeeded" xml:space="preserve"> Esta versão do GeneXus usa um esquema de banco de dados mais novo para a Base de Conhecimento do que aquele que possui atualmente; se você abrir agora, uma reorganização será executada e você não poderá abri-la com versões anteriores do GeneXus. </data>
+  <data name="OpenKBUnknownSchema" xml:space="preserve"> Esta Base de Conhecimento não pode ser aberta com esta versão do GeneXus, pois possui um esquema de banco de dados desconhecido (mais recente). Você precisa abri-lo com GeneXus {0} ou acima. </data>
+  <data name="CannotSaveInReadOnlyModel" xml:space="preserve"> {0} não pode ser salvo porque a versão é somente leitura. </data>
+  <data name="WarnInvalidStoredDate" xml:space="preserve"> A Base de Conhecimento localizada em '{0}' foi modificada pela última vez em {1}, que é maior que a hora atual do sistema ({2}). Dependências de tempo não funcionarão corretamente. </data>
+  <data name="DescriptorPackageCannotBeChanged" xml:space="preserve"> O pacote do descritor não pode ser alterado (de {0} para {1}) depois de ter sido atribuído. </data>
+  <data name="WarnMissingTypeDescriptor" xml:space="preserve"> * '{0}' - '{1}' (GUID {2}) Fornecido por '{3}' (GUID {4}). </data>
+  <data name="WarnMissingTypeDescriptorIntro" xml:space="preserve"> A Base de Conhecimento em '{0}' contém itens que {1} não sabe como manipular e, portanto, ficará inacessível. É provável que a Base de Conhecimento tenha sido aberta anteriormente com uma instalação {1} com extensões que não estão presentes na atual. Esses itens são: </data>
+  <data name="WarnMissingTypeDescriptorOutro" xml:space="preserve"> Trabalhar nesta Base de Conhecimento pode perder informações relacionadas a esses itens desconhecidos. </data>
+  <data name="DefaultProviderMissing" xml:space="preserve"> Provedor padrão '{0}' tem dados em {1}, mas não foi encontrado. </data>
+  <data name="ConflictInObjectMustBeSolvedManually" xml:space="preserve"> Conflito em {0}. Compare com a revisão anterior e resolva o conflito manualmente </data>
+  <data name="ConflictInObjectResolvedWithMerge" xml:space="preserve"> Alterações em {0} mescladas com sucesso </data>
+  <data name="TypeDescriptorAttributeNotPresent" xml:space="preserve"> O tipo '{0}' no pacote '{1}' é referenciado por uma declaração {2}, mas nenhum atributo de descritor (do tipo {3}) foi encontrado nele. </data>
+  <data name="DevelopmentVersionWithDevelopmentParent" xml:space="preserve"> A versão de desenvolvimento não pode ter um pai de desenvolvimento. </data>
+  <data name="FrozenVersionWithFrozenParent" xml:space="preserve"> A versão congelada não pode ter um pai congelado. </data>
+  <data name="PositionPartLineChar" xml:space="preserve"> {0}, {1} </data>
+  <data name="VersionRevertedTo" xml:space="preserve"> A versão '{0}' foi revertida para o status da versão congelada '{1}' </data>
+  <data name="SubPartNotSupportDefault" xml:space="preserve"> A subparte de objeto não suporta o padrão </data>
+  <data name="ScopedCacheNoCurrent" xml:space="preserve"> Não há ScopedModelObectCache atual para este segmento. </data>
+  <data name="KBProperties" xml:space="preserve"> Propriedades da Base de Conhecimento </data>
+  <data name="ResolverHelperNoOwner" xml:space="preserve"> O PropertyManager fornecido não possui um proprietário. </data>
+  <data name="ResolverHelperWrongParentType" xml:space="preserve"> O proprietário do PropertyManager fornecido não é do tipo esperado ({0}). Seu tipo é: {1}. </data>
+  <data name="ResolverHelperWrongPropertyBag" xml:space="preserve"> O IPropertyBag fornecido não é um PropertyManager. </data>
+  <data name="ModuleRoot" xml:space="preserve"> (Módulo raiz) </data>
+  <data name="ResolveNameIsAmbiguous" xml:space="preserve"> '{0}' é um nome {1} ambíguo. Pode se referir a qualquer um dos seguintes itens: {2}. </data>
+  <data name="ResolveNameNoMatch" xml:space="preserve"> {0} '{1}' não foi encontrado na Base de Conhecimento. </data>
+  <data name="ObjectTypeWithNoModuleCannotHaveParent" xml:space="preserve"> Objetos do tipo '{0}' não podem ser atribuídos a um pai, uma vez que eles não pertencem a módulos. </data>
+  <data name="ObjectTypeNeedsModule" xml:space="preserve"> Objetos do tipo '{0}' devem receber um módulo. </data>
+  <data name="ModuleParentMustBeModule" xml:space="preserve"> O módulo '{0}' não pode ser atribuído como pai '{1}' porque não é um módulo. </data>
+  <data name="ModuleRootCannotHaveParent" xml:space="preserve"> Módulo raiz na KB não pode ser atribuído a um pai ({0}). </data>
+  <data name="ObjectParentCycle" xml:space="preserve"> {0} não pode ser atribuído como pai '{1}' - criaria um ciclo. </data>
+  <data name="QualifiedName" xml:space="preserve">
+    <value>Qualified Name</value>
+    <comment>#NonTranslatable - We are not translating property's name yet (all or none)</comment>
+  </data>
+  <data name="ModuleRootCannotBeDeleted" xml:space="preserve"> Não é possível excluir o módulo '{0}', pois é o módulo raiz. </data>
+  <data name="Module" xml:space="preserve">
+    <value>Module</value>
+    <comment>#NonTranslatable - We are not translating property's name yet (all or none)</comment>
+  </data>
+  <data name="ModuleOrFolder" xml:space="preserve">
+    <value>Module/Folder</value>
+    <comment>#NonTranslatable - We are not translating property's name yet (all or none)</comment>
+  </data>
+  <data name="ModelRedundancyIssueType1" xml:space="preserve"> Inconsistência encontrada para a parte '{0}' de {1}. EntityVersionComposition indica que deve ser versão {2}, mas ModelEntityVersion aponta para a versão {3}. </data>
+  <data name="ModelRedundancyIssueType2" xml:space="preserve"> Inconsistência encontrada para a parte '{0}' de {1}. O conteúdo da peça não pôde ser recuperado porque não está presente na Base de Conhecimento. </data>
+  <data name="Unknown" xml:space="preserve"> (Desconhecido) </data>
+  <data name="ObjectResolverKeyNotFound" xml:space="preserve"> Erro interno ObjectNameResolver: Não foi possível obter dados relacionados à chave '{0}'. </data>
+  <data name="CompositionCheck" xml:space="preserve"> Verificar composição da versão de entidade </data>
+  <data name="CompositionCheckDuplicatesIssueDetails" xml:space="preserve"> {0} tem dados de composição de partes incorretos / duplicados para partes {1} na versão {2}. </data>
+  <data name="CompositionCheckDuplicatesIssueNoDetails" xml:space="preserve"> A entidade com a chave {0} possui dados de composição de partes incorretos / duplicados para as partes {1} na versão {2}. </data>
+  <data name="CompositionCheckDuplicatesIssuesFixed" xml:space="preserve"> Composição da peça fixa. </data>
+  <data name="ModelRedundancyCheck" xml:space="preserve"> Verificar informações redundantes da entidade </data>
+  <data name="ModelRedundancyIssueFixed" xml:space="preserve"> Parte '{0}' de {1} corrigida. </data>
+  <data name="ObjectFullName" xml:space="preserve"> {0} '{1}' </data>
+  <data name="VersionIsBranch" xml:space="preserve"> A versão '{0}' não é uma versão de desenvolvimento </data>
+  <data name="VersionNotFrozen" xml:space="preserve"> A versão '{0}' não está congelada </data>
+  <data name="VersionsNotRelated" xml:space="preserve"> A versão '{0}' não é uma versão congelada de '{1}', nem '{1}' é uma versão de desenvolvimento de '{0}' </data>
+  <data name="CompositionCheckIntegrityIssueDetails" xml:space="preserve"> {0} possui dados incorretos de composição de versão na versão {1}. </data>
+  <data name="CompositionCheckIntegrityIssueNoDetails" xml:space="preserve"> A entidade com a chave {0} possui dados incorretos de composição de versão na versão {1}. </data>
+  <data name="CompositionCheckIntegrityIssuesFixed" xml:space="preserve"> Versão de composição corrigida. </data>
+  <data name="CannotDeleteVersionWithChildren" xml:space="preserve"> A versão '{0}' não pode ser excluída, pois possui versões filhas. Exclua as versões filho e tente novamente. </data>
+  <data name="ModelEntityPropertyRedundanciesCheck" xml:space="preserve"> Check ModelEntityProperty Redundant Information </data>
+  <data name="ModelEntityPropertyFixesUnckedErrors" xml:space="preserve"> Executar essa verificação com o argumento Corrigir pode corrigir mais problemas do que os detectados sem ela. </data>
+  <data name="ModelEntityPropertyRedundanciesCheckInVersion" xml:space="preserve"> Verificando problemas de redundância de propriedades na versão {0} </data>
+  <data name="ModelEntityPropertyRedundanciesFix" xml:space="preserve"> Corrigindo redundâncias de propriedades em todos os objetos na versão {0} </data>
+  <data name="ModelEntityPropertyRedundanciesIssues" xml:space="preserve"> {0} tem propriedades redundantes com IDs de propriedades incorretas </data>
+  <data name="CacheOptions_InvalidSizeLimit" xml:space="preserve"> O tamanho do limite de cache não pode ser menor que 0 </data>
+  <data name="CheckLastObjectIdAndLastVersionIdMessage" xml:space="preserve"> Verifique os enumeradores LastObjectId e LastVersionId </data>
+  <data name="CheckEntityLastVersionIdIssueDetails" xml:space="preserve"> {0} tem revisões com revisionId inválido </data>
+  <data name="EntityLastVersionIdIssuesFixed" xml:space="preserve"> Problemas de entidades LastVersionId corrigidos </data>
+  <data name="CheckEntityTypeLastObjectIdIssueDetails" xml:space="preserve"> EntityType '{0}' tem objetos com entityId inválido </data>
+  <data name="EntityTypeLastObjectIdIssuesFixed" xml:space="preserve"> Problemas de EntityTypes LastObjectId corrigidos </data>
+  <data name="ObjectVisibility" xml:space="preserve">
+    <value>Object Visibility</value>
+    <comment>#NonTranslatable - We are not translating property's name yet (all or none)</comment>
+  </data>
+  <data name="ObjectTypeIsOnlyAllowedInRootModule" xml:space="preserve"> Objetos do tipo '{0}' são permitidos apenas no módulo raiz. </data>
+  <data name="InvalidConversionRootModule" xml:space="preserve"> Módulo raiz não pode ser convertido em uma pasta </data>
+  <data name="DatabaseIntegrityCheck" xml:space="preserve"> Verifique a integridade do banco de dados do KnowledgeBase </data>
+  <data name="HighFragmentationFoundOnTableIndex" xml:space="preserve"> O índice '{0}' na tabela '{1}' é altamente fragmentado e deve ser recriado. Recriar esse índice pode levar algum tempo, mas reduz a fragmentação e melhora o desempenho do índice. </data>
+  <data name="LowFragmentationFoundOnTableIndex" xml:space="preserve"> O índice '{0}' na tabela '{1}' está ligeiramente fragmentado. Reorganizar este índice pode melhorar a fragmentação. </data>
+  <data name="ObjectPropertyPosition" xml:space="preserve"> '{1}' de {0} </data>
+  <data name="ObjectVisibilityDescription" xml:space="preserve"> Define se os objetos em outros módulos podem acessar o objeto. Pode ser especificado no módulo ou no nível do objeto. Valores: Público -&gt; Qualquer objeto em qualquer módulo pode acessar um objeto público. Private -&gt; Apenas objetos no mesmo módulo (e seus módulos filhos) podem acessar objetos privados. </data>
+  <data name="ModuleOrFolderDescription" xml:space="preserve"> Você pode indicar a Pasta ou o Objeto Módulo ao qual o objeto GeneXus pertencerá. As pastas estabelecem hierarquias onde cada pasta pode conter objetos GeneXus, assim como outras pastas - mas sem Module Objects. Módulos também estabelecem hierarquias onde cada Módulo pode conter objetos GeneXus, assim como outras pastas. </data>
+  <data name="CannotDeleteIndividualInterfaceObject" xml:space="preserve"> {0} não pode ser excluído sozinho, exclua o módulo. </data>
+  <data name="CannotSaveReadOnlyObject" xml:space="preserve"> {0} não pode ser salvo porque é somente leitura. </data>
+  <data name="WarnNotSupportModuleExport" xml:space="preserve"> {0} não é suportado para ser exportado na interface. </data>
+  <data name="MissingModuleImport" xml:space="preserve"> O módulo {0} não foi encontrado, a versão {1} é necessária. </data>
+  <data name="MissingModuleMinimumVersionImport" xml:space="preserve"> O módulo {0} instalado no KB tem a versão {1}, mas é necessária uma versão {2} ou superior. </data>
+  <data name="InvalidConversionModuleToFolder" xml:space="preserve"> O módulo {0} não pode ser convertido em uma pasta. </data>
+  <data name="FailedToImportContent" xml:space="preserve"> Não é possível importar todo o conteúdo do módulo. </data>
+  <data name="InvalidModuleDependencyMaximumVersionImport" xml:space="preserve"> Dependência para o módulo {0} tem uma versão máxima inválida '{1}' </data>
+  <data name="InvalidModuleDependencyMinimumVersionImport" xml:space="preserve"> Dependência para o módulo {0} tem uma versão mínima inválida '{1}' </data>
+  <data name="InvalidModuleVersionImport" xml:space="preserve"> O módulo {0} tem uma versão inválida do módulo '{1}' </data>
+  <data name="MissingModuleMaximumMajorVersionImport" xml:space="preserve"> O módulo {0} instalado no KB tem a versão {1}, mas é necessária uma versão menor que {2}. </data>
+  <data name="MissingModuleMaximumVersionImport" xml:space="preserve"> O módulo {0} instalado no KB tem a versão {1}, mas é necessária uma versão {2} ou menor. </data>
+  <data name="EnableProcessRunnerDetailsInfo" xml:space="preserve"> Detalhes do ProcessRunner omitidos. Para ativar os detalhes do erro, inclua a chave de configuração EnableProcessRunnerDetails com o valor 'true' para {0} </data>
+  <data name="InternalErrorDumpingOutput" xml:space="preserve"> Erro interno, saída de dumping: </data>
+  <data name="ErrorNonWindowsObjects" xml:space="preserve"> A pasta não pode ser convertida porque contém objetos do Windows. Por favor, mova ou remova-os e tente novamente. </data>
+  <data name="UnrecognizedTypeSpecifier" xml:space="preserve"> Especificador de Tipo Não Reconhecido '{0}' in '{1}' </data>
+</root>

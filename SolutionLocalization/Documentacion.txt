@@ -1,0 +1,42 @@
+1- Generar los Xls para ser enviados. Se generan uno en cada directorio de proyecto.
+
+Con el siguiente comando:
+
+msbuild GenerateResouces.msbuild /t:GenerateXlsFromResx  /p:RootDir=...   /p:OutputXls=... [/p:Culture=]
+
+El RootDir indica el directorio donde empezar a buscar Resx recursivamente y el outputxls el archivo de salida.
+
+Enviar los Xls a traducir.
+
+Ejemplo:
+
+msbuild GenerateResources.msbuild /t:GenerateXlsFromResx /p:RootDir=C:\Dev\Tilo\ /p:OutputXls=c:\Dev\Tools\SatelliteGeneration\dataJP.xls /p:Culture=ja-JP
+
+
+2- Luego de que se llenaron los Xls enviados se reciben y se generan los Resx para cada cultura con el siguiente comando
+
+msbuild GenerateResources.msbuild /t:GenerateResxFromXls /p:InputXls=...
+
+Esto generara resx localizados para cada idioma que se contenga en el xls.
+
+Ejemplo:
+
+msbuild GenerateResources.msbuild /t:GenerateResxFromXls /p:InputXls=C:\Dev\Tools\SatelliteGeneration\data2JP.xls
+
+
+3- El plan de lo que hay que generar hay que hacerlo de la siguiente manera:
+
+msbuild GenerateResources.msbuild /t:CreateResourcesCatalog /p:BasePath=c:\dev\tilo\  /p:SerializedPath=c:\Dev\Tools\SatelliteGeneration\plan.xml
+
+
+
+4- Generar los satellite assemblies basados en el plan y los resources obtenidos del excel
+
+
+msbuild GenerateResources.msbuild /p:BasePath=C:\Dev\Tools\SatelliteGeneration\ /p:PlanXml=c:\Dev\Tools\SatelliteGeneration\plan.xml /p:Culture=ja-JP
+
+5- Generar desde un data.xml bajado de la tool cooperativa a resources genexus y probar
+
+msbuild GenerateResources.msbuild /t:TestCultureResources /p:KeyFile=c:\genexus\teronet\commoninfo\security\keys\artech.snk /p:GenexusDirectory=c:\genexus\teronet\deploy\genexus\debug /p:DataFile="C:\TestLocalizationMsBuild\data.xml" /p:OutputDirectory=C:\TestLocalizationMSBuild /p:PlanXml=c:\genexus\teronet\_tmp\ResourcesCatalog.xml /p:Culture=es /p:Version=11.0.0.0 /p:ServiceUrl="http://localhost/GeneXusIDENetSQLServer/atoxml.aspx?1"
+
+

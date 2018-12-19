@@ -123,4 +123,38 @@ Once you are ready, you can use the following task to bring your data back again
 msbuild GenerateResources.msbuild /t:DataToResx /p:OutputDirectory=c:\SolutionDir /p:ServiceUrl="https://labsnet.genexuscloud.com/CollaborativeTranslations/atoxml.aspx?2"
 ```
 
+### Integration with Excel
+
+There are many cases that excel or similar is the best way of data interchange with translators. So we provide 2 additional tasks to export to Excel and to import from excel.
+
+### To receive from Excel : XlsToResxTask
+
+```
+msbuild GenerateResouces.msbuild /t:GenerateXlsFromResx  /p:RootDir=...   /p:OutputXls=... [/p:Culture=]
+```
+
+Sample:
+
+```
+msbuild GenerateResources.msbuild /t:GenerateXlsFromResx /p:RootDir=C:\Dev\Tilo\ /p:OutputXls=c:\Dev\Tools\SatelliteGeneration\dataJP.xls /p:Culture=ja-JP
+```
+
+### To send resx to excel : ResXToXlsTask
+
+```
+msbuild GenerateResources.msbuild /t:GenerateResxFromXls /p:InputXls=...
+```
+
+This command will generate resx localized for each language in the xls file.
+
+
+Sample:
+
+```
+msbuild GenerateResources.msbuild /t:GenerateResxFromXls /p:InputXls=C:\Dev\Tools\SatelliteGeneration\data2JP.xls
+```
+ 
+
+
+
 

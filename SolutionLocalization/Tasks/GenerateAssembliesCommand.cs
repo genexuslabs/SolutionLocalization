@@ -55,8 +55,9 @@ namespace SolutionLocalization.Tasks
 			try
 			{
 				List<SatelliteAssembly> assemblies = GetAssemblies(PlanXml, Culture, BasePath, Configuration, FullOutputDirectory);
-				if (!String.IsNullOrEmpty(KeyFile))
-					assemblies.ForEach(ass => ass.KeyFile = KeyFile);
+                //	Genexus Still is sending KeyFile so do not override 
+                // if (!String.IsNullOrEmpty(KeyFile))
+			//		assemblies.ForEach(ass => ass.KeyFile = KeyFile);
 				Console.WriteLine("Generate Satellite Assemblies");
 				GenerateSatelliteAssemblies(assemblies);
 				return true;

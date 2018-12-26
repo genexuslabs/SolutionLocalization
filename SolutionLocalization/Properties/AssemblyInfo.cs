@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -10,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("GeneXus")]
 [assembly: AssemblyProduct("SolutionLocalization")]
-[assembly: AssemblyCopyright("Copyright © 2013-2016 GeneXus. All Rights Reserved")]
+[assembly: AssemblyCopyright("Copyright © 2018 GeneXus. All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

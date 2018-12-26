@@ -1,6 +1,7 @@
 using OfficeOpenXml;
 using SolutionLocalization;
 using SolutionLocalization.Helpers;
+using SolutionLocalization.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,12 +64,12 @@ namespace Resx2Xls
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine(string.Format("warning: Disabling validation of translations, cannot load the specified file (exception: {0})", ex.Message));
+					OutputHelper.WriteWarning(string.Format(Messages.MessageIntegrityValidationDisabled, ex.Message, xmlFile));
 					docValidEntries = null;
 				}
 			}
 
-			string path = outputDir == null? new FileInfo(xlsFile).DirectoryName : outputDir;
+			string path = outputDir == null ? new FileInfo(xlsFile).DirectoryName : outputDir;
 			using (ExcelPackage app = new ExcelPackage(new FileInfo(xlsFile)))
 			{
 				ExcelWorksheets sheets = app.Workbook.Worksheets;
@@ -109,7 +110,7 @@ namespace Resx2Xls
 								if (!Directory.Exists(fileInfo.DirectoryName))
 									Directory.CreateDirectory(fileInfo.DirectoryName);
 
-								Console.WriteLine(string.Format("Checking translations for '{0}'...", f));
+								Console.WriteLine(string.Format(Messages.CheckingTranslation, f));
 
 								int resourceItemCount = 0;
 								using (StreamWriter sw = new StreamWriter(f, false, Encoding.UTF8))
@@ -153,11 +154,11 @@ namespace Resx2Xls
 								{
 									try { File.Delete(f); }
 									catch { }
-									Console.WriteLine("Ignore generation, no-translations defined.");
+									Console.WriteLine(Messages.IgnoreXLSGenerationNoTranslations);
 								}
 								else
 								{
-									Console.WriteLine("Successfully generated.");
+									Console.WriteLine(Messages.XLSGenerationSuccess);
 								}
 							}
 						}
@@ -169,8 +170,9 @@ namespace Resx2Xls
 
 					col++;
 				}
+				if (!hasLanguage)
+					OutputHelper.WriteWarning(Messages.IgnoreXLSGenerationNoLanguage);
 			}
-			Console.WriteLine("warning: xls document has no language information");
 		}
 		private bool IsValidEntry(ExcelWorksheet sheet, int row, string key, ref string text, XmlDocument xmlValidEntries, string cult)
 		{
@@ -183,7 +185,7 @@ namespace Resx2Xls
 				if (entryDef == null)
 				{
 					text = null;
-					Console.WriteLine(string.Format("warning: Ignoring translation for FILE:{0}, KEY:{1} - obsolete", resxFile, key));
+					OutputHelper.WriteWarning(string.Format(Messages.IntegrityIgnoringObsoleteTranslation, resxFile, key));
 				}
 				else
 				{
@@ -194,7 +196,7 @@ namespace Resx2Xls
 						// Preserve the current translation
 						text = GetXmlInnerText(entryDef.SelectSingleNode("Translation/Text[@Culture='{cult}']"));
 						if (string.IsNullOrEmpty(text))
-							Console.WriteLine(string.Format("warning: Ignoring translation for FILE:{0}, KEY:{1} - original text has changed", resxFile, key));
+							OutputHelper.WriteWarning(string.Format(Messages.IntegrityIgnoringOriginalChangedTranslation, resxFile, key));
 					}
 				}
 			}
@@ -229,7 +231,7 @@ namespace Resx2Xls
 				string cult;
 				if (!ResxIsCultureSpecific(f, out cult) && !FileHelper.IsExcluded(path, f, directoryExcludes))
 				{
-					Console.WriteLine("Reading " + f);
+					Console.WriteLine(string.Format(Messages.ReadingFile, f));
 					ReadResx(f, path, rd, cultureList, excludeList, useFolderNamespacePrefix, includeNonTranslatableTxt);
 				}
 				else if (cultures.Contains(cult))
@@ -240,7 +242,7 @@ namespace Resx2Xls
 
 			foreach (string f in cultureSpecific)
 			{
-				Console.WriteLine("Reading " + f);
+				Console.WriteLine(string.Format(Messages.ReadingFile, f));
 				ReadResxCult(f, path, rd, cultureList, excludeList, useFolderNamespacePrefix);
 			}
 
@@ -329,13 +331,13 @@ namespace Resx2Xls
 			{
 				if (TryReadingAsXml(fileName, rd, cultureList, excludeList, fileRelativePath, fileDestination, includeNonTranslatableTxt, keys))
 				{
-					Console.WriteLine(string.Format("warning: A problem occured reading {0} (Exception: {1})", fileName, ex.Message));
-					Console.WriteLine("  >> Info: looking only for <control>.Text expressions.");
+					OutputHelper.WriteWarning(string.Format(Messages.ErrorReadingFileDetailException, fileName, ex.Message));
+					Console.WriteLine("  " + Messages.InfoReadingControlText);
 				}
 				else
 				{
-					Console.WriteLine(string.Format("error: A problem occured reading {0}", fileName));
-					Console.WriteLine(string.Format("  >> Exception: {0}", ex.Message));
+					OutputHelper.WriteError(string.Format(Messages.ErrorReadingFile, fileName));
+					Console.WriteLine("  " + string.Format(Messages.InfoExceptionDetail, ex.Message));
 				}
 			}
 		}
@@ -458,7 +460,7 @@ namespace Resx2Xls
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("A problem occured reading " + fileName + "\n" + ex.Message, "Information");
+				Console.WriteLine(string.Format(Messages.ErrorReadingFileDetailException, fileName, ex.Message), "Information");
 			}
 			reader.Close();
 		}
@@ -522,7 +524,7 @@ namespace Resx2Xls
 
 		private void DataSetToXls(ResxData rd, string fileName)
 		{
-			Console.WriteLine("Creating Spreadsheet...");
+			Console.WriteLine(Messages.CreatingSpreadsheet);
 			using (ExcelPackage app = new ExcelPackage(new FileInfo(fileName)))
 			{
 				app.Workbook.Worksheets.Add("WorkSheet1");
@@ -625,7 +627,7 @@ namespace Resx2Xls
 
 		private void DataSetToXml(ResxData rd, string fileName)
 		{
-			Console.WriteLine("Creating Xml...");
+			Console.WriteLine(Messages.CreatingXml);
 			using (XmlWriter xw = XmlWriter.Create(fileName, new XmlWriterSettings() { Encoding = new UTF8Encoding(false), Indent = true }))
 			{
 				int row = DATA_ROWS_OFFSET;

@@ -7,16 +7,15 @@
 	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.ResXToXmlTask" />
 	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.XlsToResxTask" />
 	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.GenerateAssemblies" />
-  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.CreateResourcesCatalog" />
-  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.GenerateResourcesForGeneXusTask" />
-  <UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.DataToResxTask" />
- 
-  
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.CreateResourcesCatalog" />
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.GenerateResourcesForGeneXusTask" />
+	<UsingTask AssemblyFile="SolutionLocalization.dll" TaskName="SolutionLocalization.DataToResxTask" />
 
 	<PropertyGroup>
 		<FileVersion>10.1.0.0</FileVersion>
 		<KeyFile>c:\dev\tilo\CommonInfo\Security\Keys\Artech.snk</KeyFile>
-    <Incremental>false</Incremental>
+		<Incremental>false</Incremental>
+		<DataFile>$(OutputDirectory)\data.xml</DataFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -50,21 +49,21 @@
 		<CultureInfo Include="jp-JP" Condition="'$(Culture)'=='' and '$(CulturesCommaSeparated)'==''"/>
 	</ItemGroup>
 
-  <Target Name="DataToResx" DependsOnTargets="GetSdkPath">
-    <DataToResxTask ServiceUrl="$(ServiceUrl)"  Incremental="$(Incremental)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
-  </Target>
+	<Target Name="DataToResx" DependsOnTargets="GetSdkPath">
+		<DataToResxTask DataFile="$(DataFile)" ServiceUrl="$(ServiceUrl)" Incremental="$(Incremental)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+	</Target>
 
-  <Target Name="TestCultureResources" DependsOnTargets="GetSdkPath">
-    <ItemGroup>
-      <SatelliteTool Include="$(SdkPath)\**\resgen.exe"/>
-    </ItemGroup>
-    <PropertyGroup>
-      <SatelliteToolsPath>$([System.IO.Directory]::GetParent(%(SatelliteTool.Identity)))</SatelliteToolsPath>
-    </PropertyGroup>
+	<Target Name="TestCultureResources" DependsOnTargets="GetSdkPath">
+		<ItemGroup>
+			<SatelliteTool Include="$(SdkPath)\**\resgen.exe"/>
+		</ItemGroup>
+		<PropertyGroup>
+			<SatelliteToolsPath>$([System.IO.Directory]::GetParent(%(SatelliteTool.Identity)))</SatelliteToolsPath>
+		</PropertyGroup>
 
-    <DataToResxTask ServiceUrl="$(ServiceUrl)" Incremental="$(Incremental)" DataFile="$(DataFile)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+		<DataToResxTask ServiceUrl="$(ServiceUrl)" Incremental="$(Incremental)" DataFile="$(DataFile)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
 
-    <GenerateAssemblies
+		<GenerateAssemblies
 			PlanXml="$(PlanXml)"
 			KeyFile="$(KeyFile)"
 			FileVersion="$(Version)"
@@ -75,9 +74,9 @@
 			Configuration="$(Configuration)"
 			ToolsPath="$(SatelliteToolsPath)"/>
 
-    <GenerateResourcesForGeneXusTask GeneXusPath="$(GenexusDirectory)" BasePath="$(OutputDirectory)" Culture="$(Culture)" />
-    
-  </Target>
+		<GenerateResourcesForGeneXusTask GeneXusPath="$(GenexusDirectory)" BasePath="$(OutputDirectory)" Culture="$(Culture)" />
+
+	</Target>
 
 	<Target Name="GenerateAssemblies" DependsOnTargets="GetSdkPath">
 		<ItemGroup>

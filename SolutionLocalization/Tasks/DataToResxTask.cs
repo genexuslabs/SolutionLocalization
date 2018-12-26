@@ -10,19 +10,31 @@ namespace SolutionLocalization
 	public class DataToResxTask : Microsoft.Build.Utilities.Task
 	{
 		public DataToResxTask()
-			: base()
-		{
-			Incremental = true;
-		}
+			: base() { }
 
-		public string DataFile { get; set; }
-		[Required]
-		public string OutputDirectory { get; set; }
-		[Required]
-		public string Culture { get; set; }
 		[Required]
 		public string ServiceUrl { get; set; }
-		public bool Incremental { get; set; }
+		/// <summary>
+		/// Root directory where to create the Resx files
+		/// </summary>
+		[Required]
+		public string OutputDirectory { get; set; }
+		/// <summary>
+		/// Specified culture for translations; more than one culture can be specified using the
+		/// ',' as separator. E.g.: /p:Culture=es,it,pt
+		/// </summary>
+		[Required]
+		public string Culture { get; set; }
+		/// <summary>
+		/// Xml file with the downloaded translations; if not value is specified, a Data.xml file
+		/// is created at the <para>OutputDirectory</para>.
+		/// </summary>
+		public string DataFile { get; set; }
+		/// <summary>
+		/// Specifies to download only newer translations; the write date of <para>DataFile</para>
+		/// is used for that calc. Default value: true.
+		/// </summary>
+		public bool Incremental { get; set; } = true;
 
 		public override bool Execute()
 		{
@@ -31,9 +43,7 @@ namespace SolutionLocalization
 			if (File.Exists(DataFile) && Incremental)
 			{
 				DateTime lastWriteTimeUtc = File.GetLastWriteTimeUtc(DataFile);
-				string lastTime = lastWriteTimeUtc.ToString("yyyyMMddHHmmss");
-				if (Incremental)
-					ServiceUrl += "," + lastTime;
+				ServiceUrl += "," + lastWriteTimeUtc.ToString("yyyyMMddHHmmss");
 			}
 			Directory.CreateDirectory(OutputDirectory);
 			using (var client = new WebClient())

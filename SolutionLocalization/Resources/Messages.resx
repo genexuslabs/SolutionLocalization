@@ -129,6 +129,12 @@
   <data name="CreatingXml" xml:space="preserve">
     <value>Creating Xml...</value>
   </data>
+  <data name="DownloadingDataFrom" xml:space="preserve">
+    <value>Downloading data from {0}.</value>
+  </data>
+  <data name="DownloadStatus" xml:space="preserve">
+    <value>Download status: {0}%.</value>
+  </data>
   <data name="ErrorReadingFile" xml:space="preserve">
     <value>A problem occured reading {0}</value>
   </data>
@@ -164,6 +170,9 @@
   </data>
   <data name="ReadingFile" xml:space="preserve">
     <value>Reading {0}</value>
+  </data>
+  <data name="StartCultureResxGeneration" xml:space="preserve">
+    <value>Start resx generation for culture {0}.</value>
   </data>
   <data name="XLSGenerationSuccess" xml:space="preserve">
     <value>Successfully generated.</value>

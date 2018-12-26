@@ -97,6 +97,24 @@ namespace SolutionLocalization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading data from {0}..
+        /// </summary>
+        internal static string DownloadingDataFrom {
+            get {
+                return ResourceManager.GetString("DownloadingDataFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download status: {0}%..
+        /// </summary>
+        internal static string DownloadStatus {
+            get {
+                return ResourceManager.GetString("DownloadStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A problem occured reading {0}.
         /// </summary>
         internal static string ErrorReadingFile {
@@ -201,6 +219,15 @@ namespace SolutionLocalization.Resources {
         internal static string ReadingFile {
             get {
                 return ResourceManager.GetString("ReadingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start resx generation for culture {0}..
+        /// </summary>
+        internal static string StartCultureResxGeneration {
+            get {
+                return ResourceManager.GetString("StartCultureResxGeneration", resourceCulture);
             }
         }
         

@@ -3,6 +3,7 @@ using SolutionLocalization.Tasks;
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace SolutionLocalization
 {
@@ -25,7 +26,6 @@ namespace SolutionLocalization
 
 		public override bool Execute()
 		{
-			//Debug.Assert(false);
 			if (String.IsNullOrEmpty(DataFile))
 				DataFile = Path.Combine(OutputDirectory, "data.xml");
 			if (File.Exists(DataFile) && Incremental)
@@ -38,12 +38,27 @@ namespace SolutionLocalization
 			Directory.CreateDirectory(OutputDirectory);
 			using (var client = new WebClient())
 			{
-				client.DownloadFile(ServiceUrl, DataFile);
+                Log.LogMessage(String.Format(Resources.Messages.DownloadingDataFrom, ServiceUrl));
+                client.DownloadProgressChanged += WebClientDownloadProgressChanged;
+                
+                Task downloadFile = client.DownloadFileTaskAsync(ServiceUrl, DataFile);
+                Task.WaitAll(downloadFile);
 			}
 			string dataFile = DataFile;
 			Directory.CreateDirectory(OutputDirectory);
-			DataToResx.ToResx(dataFile, Culture, OutputDirectory);
+
+            string[] cultures = Culture.Split(new char[] { ',' });
+            foreach (string culture in cultures)
+            {
+                Log.LogMessage(String.Format(Resources.Messages.StartCultureResxGeneration, culture));
+                DataToResx.ToResx(dataFile, culture, OutputDirectory);
+            }
 			return true;
 		}
-	}
+
+        void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Log.LogMessage(String.Format(Resources.Messages.DownloadStatus, e.ProgressPercentage));
+        }
+    }
 }

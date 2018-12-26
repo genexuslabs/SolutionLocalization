@@ -116,11 +116,13 @@ Once you are ready, you can use the following task to bring your data back again
     <DataToResxTask ServiceUrl="$(ServiceUrl)"  OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
   </Target>
 ```
+The parameter Culture support several cultures comma separated. (ie: "pt,es")
+
 
 #### Command Line Call
 
 ```
-msbuild GenerateResources.msbuild /t:DataToResx /p:OutputDirectory=c:\SolutionDir /p:ServiceUrl="https://labsnet.genexuscloud.com/CollaborativeTranslations/atoxml.aspx?2"
+msbuild GenerateResources.msbuild /t:DataToResx /p:OutputDirectory=c:\SolutionDir /p:ServiceUrl="<your url>" /p:Culture="es,pt"
 ```
 
 ### Integration with Excel

@@ -16,6 +16,7 @@
 	<PropertyGroup>
 		<FileVersion>10.1.0.0</FileVersion>
 		<KeyFile>c:\dev\tilo\CommonInfo\Security\Keys\Artech.snk</KeyFile>
+    <Incremental>false</Incremental>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -50,7 +51,7 @@
 	</ItemGroup>
 
   <Target Name="DataToResx" DependsOnTargets="GetSdkPath">
-    <DataToResxTask ServiceUrl="$(ServiceUrl)"  OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+    <DataToResxTask ServiceUrl="$(ServiceUrl)"  Incremental="$(Incremental)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
   </Target>
 
   <Target Name="TestCultureResources" DependsOnTargets="GetSdkPath">
@@ -61,7 +62,7 @@
       <SatelliteToolsPath>$([System.IO.Directory]::GetParent(%(SatelliteTool.Identity)))</SatelliteToolsPath>
     </PropertyGroup>
 
-    <DataToResxTask ServiceUrl="$(ServiceUrl)" DataFile="$(DataFile)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
+    <DataToResxTask ServiceUrl="$(ServiceUrl)" Incremental="$(Incremental)" DataFile="$(DataFile)" OutputDirectory="$(OutputDirectory)" Culture="$(Culture)" />
 
     <GenerateAssemblies
 			PlanXml="$(PlanXml)"
